@@ -3,16 +3,23 @@
 
 <ul>
   <li>
-    First name: <%= @customization_first_name %>
+    First name: <%= @the_photo.first_name %>
   </li>
   <li>
-    Last name: <%= @customization_last_name %>
+    Last name: <%= @the_photo.last_name %>
   </li>
   <li>
-    Tagline: <%= @customization_tagline %>
+    Tagline: <%= @the_photo.tagline %>
   </li>
   <li>
-    <img src="<%= @customization_image %>" class="img-responsive">
+    Phone Number: <%= @the_photo.phone %>
+  </li>
+  <li>
+    <%= cl_image_tag(@the_photo.image, :transformation=>[
+      {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
+      {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
+      ])
+    %>
   </li>
 </ul>
 

@@ -15,7 +15,13 @@
     Tagline: <%= @customization_tagline %>
   </li>
   <li>
-    <img src="<%= @customization_image %>" class="img-responsive">
+    Phone Number: <%= @customization_phone %>
+  <li>
+    <%= cl_image_tag(@new_photo.image, :transformation=>[
+      {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
+      {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
+      ])
+    %>
   </li>
 </ul>
 
@@ -24,16 +30,18 @@
   <a href="/new_customization_form">Try again: resubmit photo and/or information</a>
 </div>
 
-<form action="/save" method="post">
+<form action="/save" method="post" enctype="multipart/form-data">
 
   <input name="query_first_name_id" id="query_first_name_id" value="<%= @customization_first_name %>" type="hidden">
 
   <input name="query_last_name_id" id="query_last_name_id" value="<%= @customization_last_name %>" type="hidden">
 
   <input name="tagline" id="tagline" value="<%= @customization_tagline %>" type="hidden">
+  
+  <input name="query_phone" id="query_phone" value="<%= @customization_phone %>" type="hidden">
 
   <input name="customization_image" id="customization_image" value="<%= @customization_image %>" type="hidden">
 
   <button>This looks right!</button>
-  
+
 </form>

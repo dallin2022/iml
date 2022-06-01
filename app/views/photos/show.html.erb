@@ -1,21 +1,13 @@
 <div>
   <div>
     <h1>
-      Photo #<%= @the_photo.id %> details
+      <%= @the_photo.first_name %> <%= @the_photo.last_name %> customization submission TSV
     </h1>
 
     <div>
-      <div>
-        <a href="/photos">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_photo/<%= @the_photo.id %>">
-          Delete photo
-        </a>
-      </div>
+      <a href="/photos">
+        Go back
+      </a>
     </div>
 
     <dl>
@@ -23,21 +15,25 @@
         Image
       </dt>
       <dd>
-        <%= @the_photo.image %>
+        <%= cl_image_tag(@the_photo.image, :transformation=>[
+          {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
+          {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
+          ])
+        %>
       </dd>
 
       <dt>
-        Caption
+        Tagline
       </dt>
       <dd>
-        <%= @the_photo.caption %>
+        <%= @the_photo.tagline %>
       </dd>
 
       <dt>
-        Owner
+        Name
       </dt>
       <dd>
-        <%= @the_photo.owner_id %>
+        <%= @the_photo.first_name %> <%= @the_photo.last_name %>
       </dd>
 
       <dt>
@@ -47,18 +43,11 @@
         <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
 
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_photo.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
 
 <hr>
-
 
 <div>
   <div>
@@ -74,23 +63,32 @@
 
         <input type="text" id="image_box" name="query_image" value="<%= @the_photo.image %>">
       </div>
-
+      
       <div>
-        <label for="caption_box">
-          Caption
+        <label for="first_name_box">
+          First Name
         </label>
 
-        <textarea id="caption_box" name="query_caption"><%= @the_photo.caption %></textarea>
+        <input type="text" id="first_name_box" name="query_first_name" value="<%= @the_photo.first_name %>">
+      </div>
+  
+      <div>
+        <label for="last_name_box">
+          Last Name
+        </label>
+
+        <input type="text" id="last_name_box" name="last_name" value="<%= @the_photo.last_name %>">
       </div>
 
       <div>
-        <label for="owner_id_box">
-          Owner
+        <label for="tagline_box">
+          Tagline
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_photo.owner_id %>">
+        <textarea id="tagline_box" name="query_tagline"><%= @the_photo.tagline %></textarea>
       </div>
 
+      
       <button>
         Update photo
       </button>
@@ -99,3 +97,97 @@
 </div>
 
 <hr>
+
+
+<h2>TSV Upload</h2>
+
+<table border="1">
+      <tr>
+        <th>
+          AgentPhoto
+        </th>
+
+        <th>
+          comp
+        </th>
+
+        <th>
+          AgentName
+        </th>
+
+        <th>
+          PhoneNumber
+        </th>
+        
+        <th>
+          Services
+        </th>
+
+        <th>
+          RenderName
+        </th>
+
+      </tr>
+
+      <% @list_of_photos.each do |a_photo| %>
+      <tr>
+        <td>
+          <%= a_photo.first_name %> <%= a_photo.last_name %>_Agent Photo Cropped.png
+        </td>
+
+        <td>
+          <%= cl_image_tag(a_photo.image, :transformation=>[
+            {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
+            {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
+            ])
+          %>
+        </td>
+
+        <td>
+          <%= a_photo.tagline %>
+        </td>
+
+        <td>
+          <%= a_photo.first_name %>
+        </td>
+       
+        <td>
+          <%= a_photo.last_name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_photo.created_at) %> ago
+        </td>
+     
+        
+      </tr>
+      <% end %>
+    </table>
+
+    Tom Ogrady_Agent Photo Cropped.png	
+    LIRPs0 Your IUL Retirement Policy	
+    Tom Ogrady	
+    (610) 384-7067	
+    Life • Home • Auto • Commercial	
+    Tom Ogrady_LIRPs0 Your IUL Retirement Policy_
+
+Auto Liability—What is it!
+Why Auto Rates Go Up
+Annuities, Explained.
+Buy Term, Invest the Difference! Think Again.
+Life Insurance for Children
+Paycheck Insurance
+Life Insurance Through Work0 What You May Not Know
+Life Insurance for Homemaker Spouses0 Why & How Much!
+How Much Life Insurance Do I Need!
+Insurability0 Don't Wait
+LIRPs0 Your IUL Retirement Policy
+While You're Still Alive0 The Living Benefits of Life Insurance
+Life Insurance & Long-Term Care
+Life Insurance Mortgage Protection
+Term vs Permanent Life Insurance, Explained.
+LIRPs0 Tax-Free Growth
+Ooo... What If I Die!
+Life of Significance
+Return of Premium
+Buy Sell Agreement

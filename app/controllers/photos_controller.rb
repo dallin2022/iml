@@ -6,14 +6,18 @@ class PhotosController < ApplicationController
     @customization_last_name = params.fetch("query_last_name_id")
     @customization_tagline = params.fetch("tagline")
     @customization_image = params.fetch("customization_image")
+    @customization_phone = params.fetch("query_phone")
 
-    new_submission = Photo.new
-    new_submission.tagline = @customization_tagline
-    new_submission.first_name = @customization_first_name
-    new_submission.last_name = @customization_last_name
-    new_submission.image = @customization_image
+    @the_photo = Photo.where({:phone => @customization_phone}).at(0)
 
-    new_submission.save
+    # Contact.where({ :last_name => "Mouse" })
+    # new_submission = Photo.new
+    # new_submission.tagline = @customization_tagline
+    # new_submission.first_name = @customization_first_name
+    # new_submission.last_name = @customization_last_name
+    # new_submission.image = @customization_image
+
+    # new_submission.save
 
     render({ :template => "photos/saved.html.erb" })
 
@@ -25,12 +29,19 @@ class PhotosController < ApplicationController
     @customization_first_name = params.fetch("query_first_name_id")
     @customization_last_name = params.fetch("query_last_name_id")
     @customization_tagline = params.fetch("tagline")
+    @customization_phone = params.fetch("query_phone")
     @customization_image = params.fetch("customization_image")
 
-    # <img src="<%= user.avatar %>" class="img-responsive">
-    # <img src="<%= photo.image %>" class="img-responsive">
+    @new_photo = Photo.new
+    @new_photo.image = @customization_image
+    @new_photo.first_name = @customization_first_name
+    @new_photo.last_name = @customization_last_name
+    @new_photo.tagline = @customization_tagline
+    @new_photo.phone = @customization_phone
+    @new_photo.save
 
-    # @customization_image_2 = photo.image
+    matching_photos = Photo.all
+    @list_of_photos = matching_photos.order({ :created_at => :desc })
 
     render({ :template => "photos/display.html.erb" })
 
@@ -38,7 +49,9 @@ class PhotosController < ApplicationController
 
   
   def input
+
     render({ :template => "photos/input.html.erb" })
+
   end
 
   def index
@@ -51,10 +64,11 @@ class PhotosController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-
     matching_photos = Photo.where({ :id => the_id })
-
     @the_photo = matching_photos.at(0)
+
+    # all_photos = Photo.all
+    # @list_of_photos = all_photos.order({ :created_at => :desc })
 
     render({ :template => "photos/show.html.erb" })
   end

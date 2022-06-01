@@ -6,6 +6,7 @@
 #  first_name :text
 #  image      :string
 #  last_name  :text
+#  phone      :string
 #  tagline    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
