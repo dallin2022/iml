@@ -1,0 +1,39 @@
+<h1>Hi <%= @customization_first_name %>, how does this look?</h1> 
+
+<div>
+  This is what we'll use to customize your videos...
+</div>
+
+<ul>
+  <li>
+    First name: <%= @customization_first_name %>
+  </li>
+  <li>
+    Last name: <%= @customization_last_name %>
+  </li>
+  <li>
+    Tagline: <%= @customization_tagline %>
+  </li>
+  <li>
+    <img src="<%= @customization_image %>" class="img-responsive">
+  </li>
+</ul>
+
+
+<div>
+  <a href="/new_customization_form">Try again: resubmit photo and/or information</a>
+</div>
+
+<form action="/save" method="post">
+
+  <input name="query_first_name_id" id="query_first_name_id" value="<%= @customization_first_name %>" type="hidden">
+
+  <input name="query_last_name_id" id="query_last_name_id" value="<%= @customization_last_name %>" type="hidden">
+
+  <input name="tagline" id="tagline" value="<%= @customization_tagline %>" type="hidden">
+
+  <input name="customization_image" id="customization_image" value="<%= @customization_image %>" type="hidden">
+
+  <button>This looks right!</button>
+  
+</form>

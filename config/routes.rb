@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-get("/new_user_form", { :controller => "form", :action => "collect"})
+get("/new_customization_form", { :controller => "photos", :action => "input"})
+
+post("/confirmation", { :controller => "photos", :action => "display"})
+
+post("/save", {:controller => "photos", :action => "save"})
 
 end

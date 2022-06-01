@@ -1,4 +1,46 @@
 class PhotosController < ApplicationController
+  
+  def save
+     
+    @customization_first_name = params.fetch("query_first_name_id")
+    @customization_last_name = params.fetch("query_last_name_id")
+    @customization_tagline = params.fetch("tagline")
+    @customization_image = params.fetch("customization_image")
+
+    new_submission = Photo.new
+    new_submission.tagline = @customization_tagline
+    new_submission.first_name = @customization_first_name
+    new_submission.last_name = @customization_last_name
+    new_submission.image = @customization_image
+
+    new_submission.save
+
+    render({ :template => "photos/saved.html.erb" })
+
+  end
+
+  def display
+    # Parameters: {"query_name_id"=>"Dallin", "tagline"=>"Tagline example", "customization_image"=>#<ActionDispatch::Http::UploadedFile:0x000055ee8f4d8978 @tempfile=#<Tempfile:/tmp/RackMultipart20220601-5210-1iyt5y7.png>, @original_filename="Screen Shot 2022-05-16 at 9.03.34 AM.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"customization_image\"; filename=\"Screen Shot 2022-05-16 at 9.03.34 AM.png\"\r\nContent-Type: image/png\r\n">}
+    
+    @customization_first_name = params.fetch("query_first_name_id")
+    @customization_last_name = params.fetch("query_last_name_id")
+    @customization_tagline = params.fetch("tagline")
+    @customization_image = params.fetch("customization_image")
+
+    # <img src="<%= user.avatar %>" class="img-responsive">
+    # <img src="<%= photo.image %>" class="img-responsive">
+
+    # @customization_image_2 = photo.image
+
+    render({ :template => "photos/display.html.erb" })
+
+  end
+
+  
+  def input
+    render({ :template => "photos/input.html.erb" })
+  end
+
   def index
     matching_photos = Photo.all
 

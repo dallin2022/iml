@@ -1,0 +1,51 @@
+<div>
+  <div>
+    <h2>
+      Upload your information to customize your videos
+    </h2>
+
+    <%# </form> %>
+    <form action="/confirmation" method="post" class="form-horizontal" enctype="multipart/form-data">
+
+      <div>
+        <label for="first_name_id_box">
+          First Name
+        </label>
+
+        <input type="text" id="first_name_id_box" name="query_first_name_id">
+      </div>
+
+      <div>
+        <label for="last_name_id_box">
+          Last Name
+        </label>
+
+        <input type="text" id="last_name_id_box" name="query_last_name_id">
+      </div>
+
+      <div>
+        <label for="tagline_box">
+          Tagline
+        </label>
+
+        <textarea id="tagline_box" name="tagline" rows="3"></textarea>
+      </div>
+
+    <%# </form> %>
+
+    <%# <form action="/create_user" method="post" class="form-horizontal" enctype="multipart/form-data"> %>
+
+      <div>
+        <label for="customization_image">
+          Image
+        </label>
+
+        <input type="file" id="customization_image" name="customization_image" class="form-control" type="hidden">
+      </div>
+      
+      <button>
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
