@@ -15,7 +15,7 @@
     Tagline: <%= @customization_tagline %>
   </li>
   <li>
-    Phone Number: <%= @customization_phone %>
+    Phone Number: (<%= @customization_phone.to_s[0,3] %>) <%= @customization_phone.to_s[3,3] %>-<%= @customization_phone.to_s[6,10] %>
   <li>
     <%= cl_image_tag(@new_photo.image, :transformation=>[
       {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
