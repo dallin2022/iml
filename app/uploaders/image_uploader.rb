@@ -4,6 +4,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include Cloudinary::CarrierWave
 
+  version(:face_cropped) do
+    array_options = [
+      {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
+      {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
+    ]
+    cloudinary_transformation(:transformation => array_options)
+  end
+
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog

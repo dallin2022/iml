@@ -20,10 +20,21 @@
           {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
           ])
         %>
-        <a href=<%= @the_photo.image %> download>
-          Download uncropped image
-        </a>
+        
+        <dd>
+          <a href=<%= @the_photo.image %> download>
+            Download uncropped image
+          </a>
+        </dd>
+
+        <dd>
+          <a href=" <%= @the_photo.image.face_cropped %>" download>
+            Download cropped image
+          </a>
+        </dd>
+
       </dd>
+      
 
        <dt>
         Name
