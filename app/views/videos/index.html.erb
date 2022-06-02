@@ -1,0 +1,68 @@
+<ul>
+  <li>  
+    <a href="/photos">Customer Profiles</a>
+  </li>  
+
+  <li> 
+    <a href="/videos">Videos</a>
+  </li>
+</ul>
+
+<div>
+  <div>
+    <h1>
+      List of all videos
+    </h1>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+
+        <th>
+          Video Name
+        </th>
+
+        <th>
+          Video AE Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+      </tr>
+
+      <% @list_of_videos.each do |a_video| %>
+      <tr>
+
+        <td>
+          <%= a_video.name %>
+        </td>
+       
+        <td>
+          <%= a_video.ae_name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_video.created_at) %> ago
+        </td>
+     
+        <td>
+          <%= time_ago_in_words(a_video.updated_at) %> ago
+        </td>
+     
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
