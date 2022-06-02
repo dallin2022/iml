@@ -38,12 +38,24 @@ class PhotosController < ApplicationController
     @new_photo.last_name = @customization_last_name
     @new_photo.tagline = @customization_tagline
     @new_photo.phone = @customization_phone
-    @new_photo.save
 
-    matching_photos = Photo.all
-    @list_of_photos = matching_photos.order({ :created_at => :desc })
+    if @new_photo.valid?
+      if @new_photo.first_name.to_s.length.to_i + @new_photo.last_name.to_s.length.to_i + @new_photo.tagline.to_s.length.to_i < 90
 
-    render({ :template => "photos/display.html.erb" })
+          @new_photo.save
+          matching_photos = Photo.all
+          @list_of_photos = matching_photos.order({ :created_at => :desc })
+
+          render({ :template => "photos/display.html.erb" })
+
+        else redirect_to("/", { :alert => "Your first name, last name, and services tagline combined must be less than 90 characters. Please make them shorter." })
+      end
+      
+    else   redirect_to("/", { :alert => @new_photo.errors.full_messages.to_sentence })
+    
+  end
+
+    
 
   end
 
@@ -67,7 +79,7 @@ class PhotosController < ApplicationController
     matching_photos = Photo.where({ :id => the_id })
     @the_photo = matching_photos.at(0)
 
-    all_videos = Video.all
+    all_videos = Content.all
     @list_of_videos = all_videos.order({ :name => :desc })
 
     render({ :template => "photos/show.html.erb" })

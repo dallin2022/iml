@@ -14,4 +14,10 @@
 #
 class Photo < ApplicationRecord
   mount_uploader :image, ImageUploader
+
+  validates :phone, length: { is: 10 }
+  validates :phone, format: { without: /\A[a-zA-Z]+\z/, message: "only allows numbers" }
+  validates :first_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  validates :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
+  
 end

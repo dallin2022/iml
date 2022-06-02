@@ -1,0 +1,112 @@
+<ul>
+  <li>  
+    <a href="/customers">Customer Profiles</a>
+  </li>  
+
+  <li> 
+    <a href="/contents">Videos</a>
+  </li>
+</ul>
+
+<div>
+  <div>
+    <h1>
+      List of all videos for customization
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new video
+    </h2>
+
+    <form action="/insert_content" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="ae_name_box">
+          Ae name
+        </label>
+
+        <input type="text" id="ae_name_box" name="query_ae_name">
+      </div>
+
+      <button>
+        Create content
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Ae name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_contents.each do |a_content| %>
+      <tr>
+        <td>
+          <%= a_content.id %>
+        </td>
+
+        <td>
+          <%= a_content.name %>
+        </td>
+
+        <td>
+          <%= a_content.ae_name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_content.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_content.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/contents/<%= a_content.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
