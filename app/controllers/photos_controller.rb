@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
     @customization_last_name = params.fetch("query_last_name_id")
     @customization_tagline = params.fetch("tagline")
     @customization_phone = params.fetch("query_phone")
-    @customization_image = params.fetch("customization_image")
+    @customization_image = params.fetch("customization_image", nil)
 
     @new_photo = Photo.new
     @new_photo.image = @customization_image
