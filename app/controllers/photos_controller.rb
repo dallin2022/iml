@@ -67,8 +67,8 @@ class PhotosController < ApplicationController
     matching_photos = Photo.where({ :id => the_id })
     @the_photo = matching_photos.at(0)
 
-    # all_photos = Photo.all
-    # @list_of_photos = all_photos.order({ :created_at => :desc })
+    all_videos = Video.all
+    @list_of_videos = all_videos.order({ :name => :desc })
 
     render({ :template => "photos/show.html.erb" })
   end
@@ -76,7 +76,7 @@ class PhotosController < ApplicationController
   def create
     the_photo = Photo.new
     the_photo.image = params.fetch("query_image")
-    the_photo.caption = params.fetch("query_caption")
+    the_photo.tagline = params.fetch("query_tagline")
     the_photo.owner_id = params.fetch("query_owner_id")
 
     if the_photo.valid?
@@ -92,8 +92,8 @@ class PhotosController < ApplicationController
     the_photo = Photo.where({ :id => the_id }).at(0)
 
     the_photo.image = params.fetch("query_image")
-    the_photo.caption = params.fetch("query_caption")
-    the_photo.owner_id = params.fetch("query_owner_id")
+    the_photo.tagline = params.fetch("query_tagline")
+    # the_photo.id = params.fetch("query_owner_id")
 
     if the_photo.valid?
       the_photo.save

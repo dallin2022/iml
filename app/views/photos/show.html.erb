@@ -49,10 +49,97 @@
 
 <hr>
 
+
+<hr>
+
+
+<h2>TSV Upload</h2>
+
+<table border="1">
+      <tr>
+        <th>
+          AgentPhoto
+        </th>
+
+        <th>
+          comp
+        </th>
+
+        <th>
+          AgentName
+        </th>
+
+        <th>
+          PhoneNumber
+        </th>
+        
+        <th>
+          Services
+        </th>
+
+        <th>
+          RenderName
+        </th>
+      </tr>
+      
+      
+      <% @list_of_videos.each do |a_video| %>
+        <tr> 
+          <td>
+            <%= @the_photo.first_name %> <%= @the_photo.last_name %>_Agent Photo Cropped.png
+          </td>
+          
+          <td>
+            <%= a_video.name %>
+          </td>
+
+          <td>
+            <%= @the_photo.first_name %> <%= @the_photo.last_name %>
+          </td>
+          
+          <td>
+            <%= @the_photo.phone %>
+          </td>
+          
+          <td>
+            <%= @the_photo.tagline %>
+          </td>
+          
+          <td>
+            <%= @the_photo.first_name %> <%= @the_photo.last_name %>_<%= a_video.ae_name %>
+          </td>
+        </tr> 
+      <% end %>
+
+</table>
+
+<%# Auto Liability—What is it!
+Why Auto Rates Go Up
+Annuities, Explained.
+Buy Term, Invest the Difference! Think Again.
+Life Insurance for Children
+Paycheck Insurance
+Life Insurance Through Work0 What You May Not Know
+Life Insurance for Homemaker Spouses0 Why & How Much!
+How Much Life Insurance Do I Need!
+Insurability0 Don't Wait
+LIRPs0 Your IUL Retirement Policy
+While You're Still Alive0 The Living Benefits of Life Insurance
+Life Insurance & Long-Term Care
+Life Insurance Mortgage Protection
+Term vs Permanent Life Insurance, Explained.
+LIRPs0 Tax-Free Growth
+Ooo... What If I Die!
+Life of Significance
+Return of Premium
+Buy Sell Agreement %>
+
+<hr>
+
 <div>
   <div>
     <h2>
-      Edit photo
+      Edit customer profile
     </h2>
 
     <form action="/modify_photo/<%= @the_photo.id %>"  method="post" >
@@ -95,99 +182,3 @@
     </form>
   </div>
 </div>
-
-<hr>
-
-
-<h2>TSV Upload</h2>
-
-<table border="1">
-      <tr>
-        <th>
-          AgentPhoto
-        </th>
-
-        <th>
-          comp
-        </th>
-
-        <th>
-          AgentName
-        </th>
-
-        <th>
-          PhoneNumber
-        </th>
-        
-        <th>
-          Services
-        </th>
-
-        <th>
-          RenderName
-        </th>
-
-      </tr>
-
-      <% @list_of_photos.each do |a_photo| %>
-      <tr>
-        <td>
-          <%= a_photo.first_name %> <%= a_photo.last_name %>_Agent Photo Cropped.png
-        </td>
-
-        <td>
-          <%= cl_image_tag(a_photo.image, :transformation=>[
-            {:width=>700, :height=>500, :gravity=>"faces", :crop=>"thumb"},
-            {:width=>200, :height=>200, :radius=>"max", :crop=>"fill"}
-            ])
-          %>
-        </td>
-
-        <td>
-          <%= a_photo.tagline %>
-        </td>
-
-        <td>
-          <%= a_photo.first_name %>
-        </td>
-       
-        <td>
-          <%= a_photo.last_name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_photo.created_at) %> ago
-        </td>
-     
-        
-      </tr>
-      <% end %>
-    </table>
-
-    Tom Ogrady_Agent Photo Cropped.png	
-    LIRPs0 Your IUL Retirement Policy	
-    Tom Ogrady	
-    (610) 384-7067	
-    Life • Home • Auto • Commercial	
-    Tom Ogrady_LIRPs0 Your IUL Retirement Policy_
-
-Auto Liability—What is it!
-Why Auto Rates Go Up
-Annuities, Explained.
-Buy Term, Invest the Difference! Think Again.
-Life Insurance for Children
-Paycheck Insurance
-Life Insurance Through Work0 What You May Not Know
-Life Insurance for Homemaker Spouses0 Why & How Much!
-How Much Life Insurance Do I Need!
-Insurability0 Don't Wait
-LIRPs0 Your IUL Retirement Policy
-While You're Still Alive0 The Living Benefits of Life Insurance
-Life Insurance & Long-Term Care
-Life Insurance Mortgage Protection
-Term vs Permanent Life Insurance, Explained.
-LIRPs0 Tax-Free Growth
-Ooo... What If I Die!
-Life of Significance
-Return of Premium
-Buy Sell Agreement
