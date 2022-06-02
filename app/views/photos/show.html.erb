@@ -15,7 +15,7 @@
     </h1>
 
     <div>
-      <a href="/photos">
+      <a href="/customers">
         Go back
       </a>
     </div>
@@ -67,7 +67,7 @@
       </dt>
       
       <dd>
-        <%= @the_photo.phone %>
+        (<%= @the_photo.phone.to_s[0,3] %>) <%= @the_photo.phone.to_s[3,3] %>-<%= @the_photo.phone.to_s[6,10] %>
       </dd>
 
       <dt>
@@ -129,7 +129,7 @@
           </td>
           
           <td>
-            <%= @the_photo.phone %>
+            (<%= @the_photo.phone.to_s[0,3] %>) <%= @the_photo.phone.to_s[3,3] %>-<%= @the_photo.phone.to_s[6,10] %>
           </td>
           
           <td>

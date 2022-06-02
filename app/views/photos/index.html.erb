@@ -77,7 +77,7 @@
         </td>
 
         <td>
-          <%= a_photo.phone %>
+          (<%= a_photo.phone.to_s[0,3] %>) <%= a_photo.phone.to_s[3,3] %>-<%= a_photo.phone.to_s[6,10] %>
         </td>
         
         <td>
