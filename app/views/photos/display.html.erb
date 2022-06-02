@@ -32,7 +32,7 @@
 
 <form action="/save" method="post" enctype="multipart/form-data">
 
-  <input name="query_first_name_id" id="query_first_name_id" value="<%= @customization_first_name %>" type="hidden">
+  <input name=<%= "query_first_name_id" %> id=<%= "query_first_name_id" %> value="<%= @customization_first_name %>" type="hidden">
 
   <input name="query_last_name_id" id="query_last_name_id" value="<%= @customization_last_name %>" type="hidden">
 
@@ -41,6 +41,8 @@
   <input name="query_phone" id="query_phone" value="<%= @customization_phone %>" type="hidden">
 
   <input name="customization_image" id="customization_image" value="<%= @customization_image %>" type="hidden">
+
+  <input name="customization_id" id="customization_id" value="<%= @new_photo.id %>" type="hidden">
 
   <button>This looks right!</button>
 

@@ -63,30 +63,17 @@ Rails.application.routes.draw do
   # DELETE
   get("/delete_photo/:path_id", { :controller => "photos", :action => "destroy" })
 
-  #------------------------------
+  # CUSTOMER-FACING FORM INPUT
 
-get("/", { :controller => "photos", :action => "input"})
+  get("/", { :controller => "photos", :action => "input"})
 
-post("/confirmation", { :controller => "photos", :action => "display"})
-
-post("/save", {:controller => "photos", :action => "save"})
-
- # Routes for the Videos resource:
-
-  # CREATE
-  post("/insert_video", { :controller => "videos", :action => "create" })
-          
-  # READ
-  get("/videos", { :controller => "videos", :action => "index" })
+  # CUSTOMER CONFIRMS THEIR INPUT
   
-  get("/videos/:path_id", { :controller => "videos", :action => "show" })
-  
-  # UPDATE
-  
-  post("/modify_video/:path_id", { :controller => "videos", :action => "update" })
-  
-  # DELETE
-  get("/delete_video/:path_id", { :controller => "videos", :action => "destroy" })
+  post("/confirmation", { :controller => "photos", :action => "display"})
+
+  # CUSTOMER IS NOTIFIED THAT THEIR INFORMATION WAS SUBMITTED, AND THEY'RE GIVEN OPTION TO TRY AGAIN
+
+  post("/save", {:controller => "photos", :action => "save"})
 
   #------------------------------
 

@@ -7,8 +7,9 @@ class PhotosController < ApplicationController
     @customization_tagline = params.fetch("tagline")
     @customization_image = params.fetch("customization_image")
     @customization_phone = params.fetch("query_phone")
+    @customization_id = params.fetch("customization_id")
 
-    @the_photo = Photo.where({:phone => @customization_phone}).at(0)
+    @the_photo = Photo.where({:id => @customization_id}).at(0)
 
     # Contact.where({ :last_name => "Mouse" })
     # new_submission = Photo.new
