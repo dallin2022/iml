@@ -14,6 +14,11 @@ class ContentsController < ApplicationController
 
     @the_content = matching_contents.at(0)
 
+    
+    matching_customers = Photo.all
+
+    @list_of_customers = matching_customers.order({ :first_name => :desc})
+
     render({ :template => "contents/show.html.erb" })
   end
 

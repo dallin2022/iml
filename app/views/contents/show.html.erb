@@ -66,7 +66,7 @@
 <div>
   <div>
     <h2>
-      Edit content
+      Edit name
     </h2>
 
     <form action="/modify_content/<%= @the_content.id %>"  method="post" >
@@ -87,10 +87,70 @@
       </div>
 
       <button>
-        Update content
+        Update name
       </button>
     </form>
   </div>
 </div>
 
 <hr>
+
+<h2>TSV Download - Customize for all customers</h2>
+
+<table border="1">
+      <tr>
+        <th>
+          AgentPhoto
+        </th>
+
+        <th>
+          comp
+        </th>
+
+        <th>
+          AgentName
+        </th>
+
+        <th>
+          PhoneNumber
+        </th>
+        
+        <th>
+          Services
+        </th>
+
+        <th>
+          RenderName
+        </th>
+      </tr>
+      
+      
+      <% @list_of_customers.each do |a_customer| %>
+        <tr> 
+          <td>
+            <%= a_customer.first_name %> <%= a_customer.last_name %>_Agent Photo Cropped.png
+          </td>
+          
+          <td>
+            <%= @the_content.name %>
+          </td>
+
+          <td>
+            <%= a_customer.first_name %> <%= a_customer.last_name %>
+          </td>
+          
+          <td>
+            (<%= a_customer.phone.to_s[0,3] %>) <%= a_customer.phone.to_s[3,3] %>-<%= a_customer.phone.to_s[6,10] %>
+          </td>
+          
+          <td>
+            <%= a_customer.tagline %>
+          </td>
+          
+          <td>
+            <%= a_customer.first_name %> <%= a_customer.last_name %>_<%= @the_content.ae_name %>_
+          </td>
+        </tr> 
+      <% end %>
+
+</table>
