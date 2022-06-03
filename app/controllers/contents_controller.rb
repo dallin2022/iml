@@ -1,4 +1,7 @@
 class ContentsController < ApplicationController
+  
+  http_basic_authenticate_with({ :name => "", :password => "team2022" })
+
   def index
     matching_contents = Content.all
 
